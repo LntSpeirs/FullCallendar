@@ -61,7 +61,7 @@ eventosDefault = [
     title: "Evento 3",
     start: "2023-04-25T09:00:00",
     end: "2023-04-30T10:30:00",
-    classNames: "evento",
+    classNames: "evento fc-event",
     display: "block",
     overlap: true,
     id: 3,
@@ -193,6 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log('Seleccionado desde ' + info.startStr + ' hasta ' + info.endStr)
     }, */
     select: function (fechaSeleccionada) {
+      $("#tituloEvento").val("");
       console.log(new Date(fechaSeleccionada.startStr));
       let fechaSeleccionadaFin = new Date(fechaSeleccionada.endStr);
       fechaSeleccionadaFin.setUTCDate(fechaSeleccionadaFin.getUTCDate() - 1);
@@ -214,12 +215,31 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     },
     //Funcion al hacer click en un evento
-    /*eventClick: function (info) {
-      if (confirm("¿Quieres eliminar el evento '" + info.event.title + "'?")) {
+    eventClick: function (info) {
+      console.log(info);
+      console.log(info.id);
+      $("#tituloEvento").val(info.event.title);
+      $("#ModalEventos").modal("toggle");
+      $("#botonEliminar").click(() => {
+        info.event.remove();
+          $("#ModalEventos").modal("toggle");
+        /* if (
+          confirm("¿Quieres eliminar el evento '" + info.event.title + "'?")
+        ) {
+          
+        }*/
+      }); 
+      $("#botonActualizar").click(() => {
+        info.event.setProp("title", $("#tituloEvento").val());
+          $("#ModalEventos").modal("toggle")
+      });
+
+      //$("#botonEliminar").remove()
+      /* if (confirm("¿Quieres eliminar el evento '" + info.event.title + "'?")) {
         info.event.remove();
         //guardarEventos();
-      }
-    },*/
+      } */
+    },
     //FUNCION PARA CUANDO HACES CLICK EN UNA FECHA
     /* dateClick: function(info) {
       console.log('Clicked on: ' + info.dateStr);
