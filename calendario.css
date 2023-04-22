@@ -1,0 +1,55 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#external-events {
+  z-index: 2;
+  top: 20px;
+  left: 10px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  background: #eee;
+}
+
+.demo-topbar + #external-events {
+  /* will get stripped out */
+  top: 60px;
+}
+
+#external-events .fc-event {
+  cursor: move;
+  margin: 3px 0;
+}
+
+#calendar-container {
+  position: relative;
+  z-index: 1;
+}
+
+#calendar {
+  align-self: center;
+  margin: 20px;
+  padding: 0;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/*DIA SELECCIONADO */
+.fc .fc-highlight {
+  background: green;
+  opacity: 50%;
+}
+
+/*DIA ACTUAL*/
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: yellow;
+  color: black;
+  font-weight: 900 !important;
+}
